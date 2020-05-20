@@ -12,7 +12,11 @@ import br.com.feirasverdes.backend.entidade.Produto;
 
 public class ProdutoDaoImpl extends BaseDaoImpl<Produto, Long> implements ProdutoDao, Serializable {
 
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6081363353686262379L;
 
 	@Override
 	public Produto pesquisarPorId(Long id, Session sessao) throws HibernateException {

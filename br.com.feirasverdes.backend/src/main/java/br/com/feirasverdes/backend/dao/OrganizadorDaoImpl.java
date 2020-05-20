@@ -7,12 +7,17 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import br.com.feirasverdes.backend.entidade.Organizador;
 import br.com.feirasverdes.backend.entidade.Produto;
 
 
 public class OrganizadorDaoImpl extends BaseDaoImpl<Organizador, Long> implements OrganizadorDao, Serializable {
 
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6795131044793208056L;
 
 	@Override
 	public Organizador pesquisarPorId(Long id, Session sessao) throws HibernateException {
@@ -21,7 +26,7 @@ public class OrganizadorDaoImpl extends BaseDaoImpl<Organizador, Long> implement
 
 	@Override
 	public List<Organizador> listarTodos(Session sessao) throws HibernateException {
-		Query<Organizador> consulta = sessao.createQuery("from Organizador", Produto.class);
+		Query<Organizador> consulta = sessao.createQuery("from Organizador", Organizador.class);
 		List<Organizador> organizadores = consulta.list();
 		return  organizadores;
 	}
