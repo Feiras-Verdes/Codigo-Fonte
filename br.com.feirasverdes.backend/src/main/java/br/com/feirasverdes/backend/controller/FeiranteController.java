@@ -18,51 +18,49 @@ import javax.ws.rs.core.Response.Status;
 import org.hibernate.Session;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import br.com.feirasverdes.backend.dao.FeiranteDao;
+import br.com.feirasverdes.backend.dao.FeiranteDaoImpl;
 import br.com.feirasverdes.backend.dao.HibernateUtil;
-import br.com.feirasverdes.backend.dao.UsuarioDao;
-import br.com.feirasverdes.backend.dao.UsuarioDaoImpl;
-import br.com.feirasverdes.backend.entidade.Usuario;
+import br.com.feirasverdes.backend.entidade.Feirante;
 
-@Path("/usuario")
-public class UsuarioController {
+@Path("/feirante")
+public class FeiranteController {
+
 
 	@Inject
-	private UsuarioDao dao;
+	private FeiranteDao dao;
 	private Session session;
 
 	public void iniciar() {
-		dao = new UsuarioDaoImpl();
-	}
-
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response salvarCliente(Usuario usuario) {
-		session = HibernateUtil.abrirSessao();
-		dao.salvarOuAlterar(usuario, session);
-		return Response.status(Status.CREATED).entity(usuario).build();
+		dao = new FeiranteDaoImpl();
 	}
 	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response salvarFeirante(Feirante feirante) {
+		session = HibernateUtil.abrirSessao();
+		dao.salvarOuAlterar(feirante, session);
+		return Response.status(Status.CREATED).entity(feirante).build();
+	}
 	@PUT
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response atualizarCliente(@PathParam("id") long id, @RequestBody Usuario usuario) {
+	public Response atualizarFeirante(@PathParam("id") long id, @RequestBody Feirante feirante) {
 		session = HibernateUtil.abrirSessao();
-		Usuario atualizarUsuario = dao.pesquisarPorId(id, session);
-		atualizarUsuario = usuario;
-		dao.salvarOuAlterar(usuario, session);
+		Feirante atualizarFeirante = dao.pesquisarPorId(id, session);
+		atualizarFeirante = feirante;
+		dao.salvarOuAlterar(feirante, session);
 		return Response.ok().build();
 	}
-
 	@DELETE
 	@Path("/{id}")
 	public Response excluir(@PathParam("id") long id) {
 		session = HibernateUtil.abrirSessao();
-		Usuario usuario = dao.pesquisarPorId(id, session);
-        dao.excluir(usuario, session);
+		Feirante feirante = dao.pesquisarPorId(id, session);
+        dao.excluir(feirante, session);
         return Response.ok().build();
     }
-
 	@GET       
     @Produces(MediaType.APPLICATION_JSON)
 	public Response listarTodos() {
@@ -75,17 +73,16 @@ public class UsuarioController {
     @Produces(MediaType.APPLICATION_JSON)
 	public Response pesquisarPorNome(@PathParam("nome") String nome) {
 		session = HibernateUtil.abrirSessao();
-		List<Usuario> usuarios = dao.pesquisarPorNome(nome, session);
+		List<Feirante> usuarios = dao.pesquisarPorNome(nome, session);
 		return Response.ok(usuarios).build();
 	}
-	
 	@GET
-	@Path("/usuario/{id}")
+	@Path("/feirante/{id}")
     @Produces(MediaType.APPLICATION_JSON)
 	public Response pesquisarPorId(@PathParam("id") long id) {
 		session = HibernateUtil.abrirSessao();
-		Usuario usuario = dao.pesquisarPorId(id, session);
-		return Response.ok(usuario).build();
+		Feirante feirante = dao.pesquisarPorId(id, session);
+		return Response.ok(feirante).build();
 	}
 	
 	
