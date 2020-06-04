@@ -13,13 +13,16 @@ import javax.persistence.Table;
 @Table(name = "usuario")
 public class Usuario implements Serializable {
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@Column(name="usuario", nullable = false, length = 200)
 	private String usuario;
+	
+	//Os seguintes tipos sao:1- usuario, 2-Organizador, 3-feirante
+	@Column(name="tipo", nullable = false, length = 10)
+	private Integer tipo;
 	
 	@Column(name="senha", nullable = false, length = 200)
 	private String senha;
@@ -40,7 +43,7 @@ public class Usuario implements Serializable {
 		super();
 	}
 
-	public Usuario(Long id, String usuario, String senha, String nome, String cpf, String telefone, String email) {
+	public Usuario(Long id, String usuario, String senha, String nome, String cpf, String telefone, String email,Integer tipo) {
 		super();
 		this.id = id;
 		this.usuario = usuario;
@@ -49,6 +52,7 @@ public class Usuario implements Serializable {
 		this.cpf = cpf;
 		this.telefone = telefone;
 		this.email = email;
+		this.tipo= tipo;
 	}
 
 	public Long getId() {
@@ -105,6 +109,14 @@ public class Usuario implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Integer getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Integer tipo) {
+		this.tipo = tipo;
 	}
 	
 	

@@ -26,19 +26,19 @@ public class Produto  implements Serializable {
 	@Column(name="preco", nullable = false, length = 200)
 	private String preco;
 	
-	private Feirante feirante;
+	private Usuario usuario;
 
 	public Produto() {
 		super();
 	}
 
-	public Produto(Long id, String nome, String descricao, String preco, Feirante feirante) {
+	public Produto(Long id, String nome, String descricao, String preco, Usuario usuario) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.preco = preco;
-		this.feirante = feirante;
+		this.usuario = usuario;
 	}
 
 	public Long getId() {
@@ -73,12 +73,12 @@ public class Produto  implements Serializable {
 		this.preco = preco;
 	}
 
-	public Feirante getFeirante() {
-		return feirante;
+	public Usuario getFeirante() {
+		return usuario;
 	}
 
-	public void setFeirante(Feirante feirante) {
-		this.feirante = feirante;
+	public void setFeirante(Usuario feirante) {
+		this.usuario = feirante;
 	}
 	
 	

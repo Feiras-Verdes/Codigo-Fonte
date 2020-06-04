@@ -27,20 +27,18 @@ public class Estande implements Serializable {
 	
 	private Feira feira;
 	
-	private Feirante feirante;
+	private Usuario usuario;
 
-	public Estande() {
-		super();
-	}
+	
 
-	public Estande(Long id, String hora_inicio, String frequencia, String hora_fim, Feira feira, Feirante feirante) {
+	public Estande(Long id, String hora_inicio, String frequencia, String hora_fim, Feira feira, Usuario usuario) {
 		super();
 		this.id = id;
 		this.hora_inicio = hora_inicio;
 		this.frequencia = frequencia;
 		this.hora_fim = hora_fim;
 		this.feira = feira;
-		this.feirante = feirante;
+		this.usuario = usuario;
 	}
 
 	public Long getId() {
@@ -83,12 +81,12 @@ public class Estande implements Serializable {
 		this.feira = feira;
 	}
 
-	public Feirante getFeirante() {
-		return feirante;
+	public Usuario getFeirante() {
+		return usuario;
 	}
 
-	public void setFeirante(Feirante feirante) {
-		this.feirante = feirante;
+	public void setFeirante(Usuario feirante) {
+		this.usuario = feirante;
 	}
 	
 	

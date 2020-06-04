@@ -35,14 +35,14 @@ public class Feira  implements Serializable {
 	
 	private Endereco endereco;
 	
-	private Organizador organizador;
+	private Usuario usuario;
 
 	public Feira() {
 		super();
 	}
 
 	public Feira(Long id, String hora_inicio, String nome, String frequencia, String hora_fim, String telefone,
-			Endereco endereco, Organizador organizador) {
+			Endereco endereco, Usuario usuario) {
 		super();
 		this.id = id;
 		this.hora_inicio = hora_inicio;
@@ -51,7 +51,7 @@ public class Feira  implements Serializable {
 		this.hora_fim = hora_fim;
 		this.telefone = telefone;
 		this.endereco = endereco;
-		this.organizador = organizador;
+		this.usuario = usuario;
 	}
 
 	public Long getId() {
@@ -110,12 +110,12 @@ public class Feira  implements Serializable {
 		this.endereco = endereco;
 	}
 
-	public Organizador getOrganizador() {
-		return organizador;
+	public Usuario getOrganizador() {
+		return usuario;
 	}
 
-	public void setOrganizador(Organizador organizador) {
-		this.organizador = organizador;
+	public void setOrganizador(Usuario organizador) {
+		this.usuario = organizador;
 	}
 	
 	
