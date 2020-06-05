@@ -12,10 +12,16 @@ import br.com.feirasverdes.backend.entidade.Usuario;
 
 @Repository
 public interface UsuarioDao extends JpaRepository<Usuario,Long>{
+	
 	@Transactional
     @Modifying
-    @Query(value = "select * from usuario u where nome like '%?1%'", nativeQuery = true)
+    @Query(value = "select * from usuario u where u.nome like '%?1%'", nativeQuery = true)
 	List<Usuario>pesquisarPorNome(String nome);
+	
+	@Transactional
+    @Modifying
+    @Query(value = "select * from usuario u where u.email like '%?1%'", nativeQuery = true)
+	Boolean verificarUsuario(String email);
 
 	Usuario getOne(long id);
 	
