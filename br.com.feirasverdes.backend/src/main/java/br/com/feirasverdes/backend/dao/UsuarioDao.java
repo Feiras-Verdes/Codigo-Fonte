@@ -18,10 +18,9 @@ public interface UsuarioDao extends JpaRepository<Usuario,Long>{
     @Query(value = "select * from usuario u where u.nome like '%?1%'", nativeQuery = true)
 	List<Usuario>pesquisarPorNome(String nome);
 	
-	@Transactional
-    @Modifying
-    @Query(value = "select * from usuario u where u.email like '%?1%'", nativeQuery = true)
-	Boolean verificarUsuario(String email);
+	
+    @Query(value = "select * from usuario u where u.email = ?1", nativeQuery = true)
+	Usuario verificarUsuario(String email);
 
 	Usuario getOne(long id);
 	

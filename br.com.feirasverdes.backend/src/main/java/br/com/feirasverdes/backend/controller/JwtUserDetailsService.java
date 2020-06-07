@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import br.com.feirasverdes.backend.dao.UsuarioDao;
@@ -17,11 +18,14 @@ public class JwtUserDetailsService implements UserDetailsService {
 	
 	@Autowired
 	private UsuarioDao dao;
+	private String logRounds;
+	
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		if ("teste@email.com".equals(username)) {
-			return new User(username, "123",
+		Usuario user = dao.verificarUsuario(username);
+		if (user.getEmail().equals(username)) {
+			return new User(username, "$2y$12$mnO3HbBnHofBc4lS5LBomOSH5zDpEgrzL1iQh7F.j3BZUHIJw9EWi",
 					new ArrayList<>());
 		} else {
 			throw new UsernameNotFoundException("User not found with username: " + username);

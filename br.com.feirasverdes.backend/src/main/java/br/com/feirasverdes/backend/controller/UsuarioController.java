@@ -28,6 +28,7 @@ import br.com.feirasverdes.backend.entidade.Usuario;
 
 @RestController
 @CrossOrigin
+@Path("/usuario")
 public class UsuarioController {
 
 	@Autowired
@@ -78,7 +79,7 @@ public class UsuarioController {
 	}
 	
 	@GET
-	@Path("/usuario/{id}")
+	@Path("/{id}")
 //    @Produces(MediaType.APPLICATION_JSON)
 	public Response pesquisarPorId(@PathParam("id") long id) {
 		Usuario usuario = dao.getOne(id);
