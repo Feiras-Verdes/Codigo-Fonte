@@ -15,13 +15,17 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.feirasverdes.backend.dao.EstandeDao;
 import br.com.feirasverdes.backend.entidade.Estande;
 
-
-@Path("/estande")
+@RestController
+@CrossOrigin
+@RequestMapping(value = "/estande")
 public class EstandeController {
 
 
